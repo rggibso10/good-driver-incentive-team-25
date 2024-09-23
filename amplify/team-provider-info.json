@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-gooddriverincentapp-dev-a105e-authRole",
+      "UnauthRoleArn": "arn:aws:iam::274815321855:role/amplify-gooddriverincentapp-dev-a105e-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::274815321855:role/amplify-gooddriverincentapp-dev-a105e-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-gooddriverincentapp-dev-a105e-deployment",
+      "UnauthRoleName": "amplify-gooddriverincentapp-dev-a105e-unauthRole",
+      "StackName": "amplify-gooddriverincentapp-dev-a105e",
+      "StackId": "arn:aws:cloudformation:us-east-1:274815321855:stack/amplify-gooddriverincentapp-dev-a105e/c9f04890-79d4-11ef-b51c-126a60b358ad",
+      "AmplifyAppId": "d12pgdocrbonly"
+    },
+    "categories": {
+      "auth": {
+        "gooddriverincentapp695dd35e": {}
+      }
+    }
+  }
+}
