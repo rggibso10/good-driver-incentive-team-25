@@ -23,7 +23,7 @@ function adminManagement() {
 	let users_to_delete = [];
 	//create code to dynamically make list
 	return(
-		<div class="Admin_User_Management">
+		<div class="Admin-User-Management">
 			<h1>User Selection</h1>
 			<div class="User-Selection">
 				<select id="option1">
@@ -34,9 +34,9 @@ function adminManagement() {
 				</select>
 			</div>
 
-			<div class="User-List">
+			<div class="User-Area">
 				<h2>Users</h2>
-				<ul id="userList" style={ul_style}>
+				<ul id="User-List" style={ul_style}>
 					<li><input type="checkbox" id="user1"><label for="user1"> User 1</label></li>
 					<li><input type="checkbox" id="user2"><label for="user2"> User 2</label></li>
 					<li><input type="checkbox" id="user3"><label for="user3"> User 3</label></li>
