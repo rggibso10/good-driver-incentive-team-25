@@ -18,33 +18,58 @@ import awsExports from './aws-exports';
 // Imports the Quiz component from Quiz.js for use in this file.
 //import Quiz from './Quiz';
 
+import { Auth } from 'aws-amplify';
+
 // Configures the Amplify library with the settings from aws-exports.js, which includes all the AWS service configurations for this project.
 Amplify.configure(awsExports);
 
+
 function App() {
+
+  const checkUserRole = async () => {
+    const user = await Auth.currentAuthenticatedUser();
+    const groups = user.signInUserSession.accessToken.payload["cognito:groups"];
+    if (groups) {
+      if (groups.includes('Admin')) {
+        return 'Admin';
+      } else if (groups.includes('Sponsor')) {
+        return 'Sponsor';
+      } else if (groups.includes('Driver')) {
+        return 'Driver';
+      }
+    }
+    return 'User'; // Default role if no group found
+  };
+
   return (
     <div className="App">
       <Authenticator>
-        {({ signOut }) => (
-          <main>
-            <header className='App-header'>
-              {/* Quiz Component */}
-             {/*<Quiz />*/}
-              {/* Sign Out Button */}
-              <button 
-                onClick={signOut} 
-                style={{ 
-                  margin: '20px', 
-                  fontSize: '0.8rem', 
-                  padding: '5px 10px', 
-                  marginTop: '20px'
-                }}
-              >
-                Sign Out
-              </button>
-            </header>
-          </main>
-        )}
+        {({ signOut, user }) => {
+          const role = checkUserRole();
+          return (
+            <main>
+              <header className='App-header'>
+                {/* Display content based on user role */}
+                {role === 'Admin' && <h2>Welcome Admin!</h2>}
+                {role === 'Sponsor' && <h2>Welcome Sponsor!</h2>}
+                {role === 'Driver' && <h2>Welcome Driver!</h2>}
+                
+                {/* Sign Out Button */}
+                <button 
+                  onClick={signOut} 
+                  style={{ 
+                    margin: '20px', 
+                    fontSize: '0.8rem', 
+                    padding: '5px 10px', 
+                    marginTop: '20px'
+                  }}
+                >
+                  Sign Out
+                </button>
+              </header>
+            </main>
+          );
+        }}
       </Authenticator>
     </div>
   );
